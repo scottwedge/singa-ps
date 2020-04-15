@@ -1,5 +1,7 @@
 How to configure singa-ps?
-1. copy the folder "mxnet" into the working directory.
+1. make mxnet into "mxnet/lib/libmxnet.so"
+2. copy "mxnet/lib/libmxnet.so" into "mxnet/python/mxnet"
+1. copy the folder "mxnet/python/mxnet" into the working directory.
 2. copy "singa_kvstore.py" and "SingaOpt.py" into the working directory.
 
 How to use singa-ps?  
