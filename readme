@@ -1,0 +1,25 @@
+How to configure singa-ps?
+1. copy the folder "mxnet" into the working directory.
+2. copy "singa_kvstore.py" and "SingaOpt.py" into the working directory.
+
+How to use singa-ps?  
+1. import singa_kvstore;
+
+2. create kvstore for ps;
+   For example:
+   #------------------------start example------------------------------------------------------------------
+   kv_type = 'dist_sync' # set synchronization mode, e.g., 'dist_async','dist_sync'
+   kv = singa_kvstore.create_kvstore(kv_type,
+                                     'SingaSGD', # set other options, like 'sgd','adam', can use mxnet optimizer
+                                     lr=0.005, 
+                                     momentum=0.9, 
+                                     weight_decay=1e-5)
+   #------------------------end example--------------------------------------------------------------------
+
+3. use kvstore to update parameters after the loss is computed;
+   For example:
+   #------------------------start example------------------------------------------------------------------
+   singa_kvstore.backward_and_update(kv,loss)
+   #------------------------end example--------------------------------------------------------------------
+
+(mnist_cnn.py is a detailed example)
